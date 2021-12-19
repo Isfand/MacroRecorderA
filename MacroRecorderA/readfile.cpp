@@ -75,18 +75,22 @@ void output()
 			for (int i{ k }, l{ 0 }; i < j; i++, l++)
 			{
 				// try using threads for each
-				if (l == 0)
-					Sleep(iRead.at(i));
-				if (l == 1)
-					mouse_move(iRead.at(i), iRead.at(i + 1));
-				//if (l == 2)
-				//	std::cout << iStore.at(i) << ',';
-				if (l == 3)
-					if (!iRead.at(i) == 0)
-					{
-						Input.mi.dwFlags = iRead.at(i);
-						SendInput(1, &Input, sizeof(INPUT));
-					}
+				switch (l) 
+				{
+					case 0:
+						Sleep(iRead.at(i));
+						break;
+					case 1:
+						mouse_move(iRead.at(i), iRead.at(i + 1));
+						break;
+					case 3:
+						if (!iRead.at(i) == 0)
+						{
+							Input.mi.dwFlags = iRead.at(i);
+							SendInput(1, &Input, sizeof(INPUT));
+						}
+						break;
+				}
 
 				if (GetAsyncKeyState(VK_NUMPAD0))
 					goto escape;
