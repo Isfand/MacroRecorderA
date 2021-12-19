@@ -35,8 +35,7 @@ void readfile()
 
 	int delay{}, xPos{}, yPos{}, mouseInput;
 
-	std::string line;
-	std::string d{}, x{}, y{}, mi{};
+	std::string line, d{}, x{}, y{}, mi{};
 	std::ifstream readfile("macrofile.csv");
 
 	while (getline(readfile, line))
